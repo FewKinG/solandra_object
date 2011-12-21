@@ -7,9 +7,9 @@ It does this by automatically indexing attributes declared as part of the model
 
 Add the following to your Gemfile:
 
-  gem 'thrift', '~> 0.7.0'
-  gem 'cassandra', '~> 0.12.1'
-  gem 'solandra_object', '~> 0.0.1'
+  gem 'jkusar-cassandra_object', :git => 'git://github.com/jkusar/cassandra_object.git'
+  gem 'sunspot_rails', :git => 'git://github.com/jkusar/sunspot.git'
+  gem 'solandra_object', :git => 'git://github.com/jkusar/solandra_object.git
 
 Change version numbers as appropriate.
 
