@@ -9,7 +9,9 @@ module SolandraObject
     include NamedScope
     include ActiveModel::MassAssignmentSecurity
     include ActiveModel::Validations::Callbacks
-    
+   
+    define_model_callbacks :initialize, :only => :after
+
     def initialize(attributes = {})
       @key = attributes.delete(:key)
       @attributes = {}
@@ -28,6 +30,8 @@ module SolandraObject
           raise(UnknownAttributeError, "unknown attribute: #{k}")
         end
       end
+  
+      run_callbacks :initialize
     end
     
     # Freeze the attributes hash such that associations are still accessible, even on destroyed records.
