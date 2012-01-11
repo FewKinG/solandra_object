@@ -7,9 +7,9 @@ It does this by automatically indexing attributes declared as part of the model
 
 Add the following to your Gemfile:
 
-  gem 'thrift', '~> 0.7.0'
-  gem 'cassandra', '~> 0.12.1'
-  gem 'solandra_object', '~> 0.0.1'
+  gem 'jkusar-cassandra_object', :git => 'git://github.com/jkusar/cassandra_object.git'
+  gem 'sunspot_rails', :git => 'git://github.com/jkusar/sunspot.git'
+  gem 'solandra_object', :git => 'git://github.com/jkusar/solandra_object.git
 
 Change version numbers as appropriate.
 
@@ -17,7 +17,14 @@ Of course you need a solr/solandra instance running to use this.
 They also need to be properly configured. Create a default config file
 for sunspot_rails like this:
 
-@rails generate sunspot_rails:install@
+  rails generate sunspot_rails:install
+
+Then edit config/sunspot.yml appropriately. You might need to set the
+path option for solr like
+
+  path: /solandra
+
+when using Solandra (you will get 404 errors if this setting is incorrect).
 
 === Example
 
@@ -28,3 +35,6 @@ for sunspot_rails like this:
     array :sub_categories, :unique => true
     json :extra_attributes
   end
+
+For more examples and instructions on how to use this, consult the documentation 
+for sunspot, sunspot_rails, cassandra_object and solandra.
